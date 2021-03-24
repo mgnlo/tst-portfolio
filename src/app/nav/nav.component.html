@@ -1,0 +1,50 @@
+<body>
+<header class="header">
+  <a class="title" href="#">Megan Lo</a>
+  <div class="menu-btn" (click)="toggle()">
+    <span class="menu-btn__lines"></span>
+  </div>
+  <ul class="menu-items" (click)="toggle()">
+    <div class="fixToCenter">
+      <ng-container *ngFor=" let navLink of navLinks">
+        <li *ngIf="navLink.hasChildPage;" (mouseenter)="dropdown=true" (mouseleave)="dropdown=false">
+          <a class="menu-item dropdown" (click)="toggle(); dropdown = dropdownToggle(dropdown)">
+            {{navLink.egName}}
+          </a>
+          <ng-container *ngIf="dropdown">
+            <ul *ngFor="let port of portfolio; let i = index;">
+              <li routerLinkActive="active">
+                <a class="menu-item" routerLink={{port.url}}>{{port.egName}}</a>
+              </li>
+              <div class="dropdown-divider" *ngIf="i < portfolio.length-1"></div>
+            </ul>
+          </ng-container>
+          <ng-container *ngIf="!dropdown"></ng-container>
+        </li>
+        <li *ngIf="!navLink.hasChildPage;" routerLinkActive="active">
+          <a class="menu-item" routerLink={{navLink.url}}>{{navLink.egName}}</a>
+        </li>
+      </ng-container>
+      <li class="socialLink">
+        <a class="fa-stack fa-2x" href="https://www.instagram.com/meganmegan_sing/" target="_blank"
+          rel="noopener noreferrer">
+          <i class="fas fa-circle fa-stack-2x"></i>
+          <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+        </a>
+        <a class="fa-stack fa-2x" href="https://www.youtube.com/channel/UCo54PpQi69o2BRtVIFcl-gg" target="_blank"
+          rel="noopener noreferrer">
+          <i class="fas fa-circle fa-stack-2x"></i>
+          <i class="fab fa-youtube fa-stack-1x fa-inverse"></i>
+        </a>
+        <a class="fa-stack fa-2x" href="mailto:candylo714@gmail.com" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-circle fa-stack-2x"></i>
+          <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+        </a>
+        <a class="fa-stack fa-2x" href="http://www.facebook.com/lotangyun" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-facebook fa-stack-2x"></i>
+        </a>
+      </li>
+    </div>
+  </ul>
+</header>
+</body>

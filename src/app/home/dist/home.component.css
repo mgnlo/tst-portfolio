@@ -1,0 +1,310 @@
+@font-face {
+  font-family: "GenJyuuGothic";
+  font-style: normal;
+  src: url("../../assets/font/GenJyuuGothic-Monospace-Normal.ttf") format("truetype"), url("../../assets/font/GenJyuuGothic-Monospace-Normal.otf") format("opentype");
+}
+@font-face {
+  font-family: "GenJyuuGothicBold";
+  font-style: bold;
+  src: url("../../assets/font/Gen-Jyuu-Gothic-Bold.ttf") format("truetype"), url("../../assets/font/Gen-Jyuu-Gothic-Bold.otf") format("opentype");
+}
+@font-face {
+  font-family: "GenJyuuGothicHeavy";
+  font-style: heavy;
+  src: url("../../assets/font/Gen-Jyuu-Gothic-Heavy.ttf") format("truetype"), url("../../assets/font/Gen-Jyuu-Gothic-Heavy.otf") format("opentype");
+}
+@font-face {
+  font-family: "Lobster";
+  font-style: regular;
+  src: url("../../assets/font/Lobster-Regular.ttf") format("truetype"), url("../../assets/font/Lobster-Regular.otf") format("opentype");
+}
+@font-face {
+  font-family: "FiraSansExtraCondensed";
+  font-style: italic;
+  src: url("../../assets/font/FiraSansExtraCondensed-SemiBoldItalic.ttf") format("truetype"), url("../../assets/font/FiraSansExtraCondensed-SemiBoldItalic.otf") format("opentype");
+}
+@font-face {
+  font-family: "Karla";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../../assets/font/Karla-Medium.ttf") format("truetype"), url("../../assets/font/Karla-Medium.otf") format("opentype");
+}
+@font-face {
+  font-family: "Ubuntu";
+  font-style: italic;
+  font-weight: 300;
+  src: url("../../assets/font/Ubuntu-BoldItalic.ttf") format("truetype"), url("../../assets/font/Ubuntu-BoldItalic.otf") format("opentype");
+}
+@font-face {
+  font-family: "NotoSansTC";
+  font-style: regular;
+  font-weight: 300;
+  src: url("../../assets/font/NotoSansTC-Regular.otf") format("opentype");
+}
+@font-face {
+  font-family: "BebasNeue";
+  font-style: regular;
+  src: url("../../assets/font/BebasNeue-Regular.ttf") format("truetype"), url("../../assets/font/BebasNeue-Regular.otf") format("opentype");
+}
+@font-face {
+  font-family: "Lato";
+  font-style: italic;
+  font-weight: 900;
+  src: url("../../assets/font/Lato-Italic.ttf") format("truetype"), url("../../assets/font/Lato-Italic.otf") format("opentype");
+}
+@font-face {
+  font-family: "AvenirNextCondBoldItalic";
+  font-style: italic;
+  src: url("../../assets/font/SourceSansPro-BoldItalic.ttf") format("truetype");
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.custom-shape-divider-bottom-1607615182 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.custom-shape-divider-bottom-1607615182 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 183px;
+}
+.custom-shape-divider-bottom-1607615182 .shape-fill {
+  fill: white;
+}
+
+/*SHAPE DIVIDER START*/
+/** For tablet devices **/
+@media (min-width: 768px) and (max-width: 1023px) {
+  .custom-shape-divider-bottom-1607615182 svg {
+    width: calc(119% + 1.3px);
+    height: 112px;
+  }
+}
+/** For mobile devices **/
+@media (max-width: 767px) {
+  .custom-shape-divider-bottom-1607615182 svg {
+    width: calc(170% + 1.3px);
+    height: 68px;
+  }
+}
+/*SHAPE DIVIDER END*/
+/*SECTION START*/
+.section-fst {
+  position: relative;
+  height: 90vh;
+  content: center;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  /*shape divider copy down here*/
+  background-color: #f0dfd6;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%237e5f4e' fill-opacity='0.24'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.section-fst .flex {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-direction: normal;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  text-align: center;
+  width: 100vw;
+}
+.section-fst .flex .title {
+  font-size: 60px;
+  font-family: Ubuntu, GenJyuuGothic;
+  text-align: center;
+  color: #7e5f4e;
+}
+.section-fst .flex p {
+  margin-top: 2em;
+  width: 70vw;
+  align-self: center;
+  font-size: 16px;
+  font-family: Karla, GenJyuuGothic;
+  color: #7e5f4e;
+}
+.section-fst .flex footer {
+  padding-top: 2em;
+}
+.section-fst .flex .btn {
+  font-size: 18px;
+  width: 115px;
+  height: 40px;
+  border-radius: 30px;
+  background-color: #7e5f4e;
+  color: white;
+  font-family: Ubuntu, GenJyuuGothic;
+  cursor: pointer;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  margin-top: 2em;
+}
+
+.section-sec h1 {
+  font-size: 24px;
+  margin-top: 10vh;
+  font-family: Ubuntu, GenJyuuGothic;
+}
+.section-sec p {
+  margin: 1em 0;
+  font-family: Karla, GenJyuuGothic;
+  font-size: 14px;
+}
+.section-sec .grid p {
+  text-align: center;
+  margin-top: 2em;
+}
+.section-sec .about {
+  width: 33vw;
+  height: auto;
+  padding-left: 5vw;
+}
+.section-sec .chart {
+  position: relative;
+  height: 60vh;
+  width: 55vw;
+  padding-left: 3vw;
+}
+.section-sec .madeBy {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  margin-bottom: 3vh;
+}
+.section-sec .madeBy img {
+  max-width: 20vw;
+  max-height: 5em;
+  height: auto;
+  display: -webkit-inline-box;
+  display: -moz-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  margin: 2em;
+}
+.section-sec .madeBy img#gsap, .section-sec .madeBy img#chartjs, .section-sec .madeBy img#jquery, .section-sec .madeBy img#bootstrap, .section-sec .madeBy img#angular {
+  max-height: 8em;
+  max-width: 8vw;
+}
+
+@media screen and (max-width: 768px) {
+  .all {
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -moz-box-direction: normal;
+    -moz-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+
+  .section-fst {
+    height: 92vh;
+  }
+  .section-fst .flex p {
+    width: 75vw;
+  }
+  .section-fst .title {
+    font-size: 60px;
+    font-family: Ubuntu, GenJyuuGothic;
+  }
+  .section-fst p {
+    margin-top: 5em;
+    font-size: 2em;
+    width: 100vw;
+    font-family: Karla, GenJyuuGothicBold;
+  }
+
+  .section-sec .about {
+    width: 100vw;
+    padding-left: unset;
+    padding: 0 5vw;
+  }
+  .section-sec .chart {
+    position: relative;
+    width: 95vw;
+    display: none;
+  }
+  .section-sec .madeBy img {
+    max-width: 20vw;
+    max-height: 5vh;
+    height: auto;
+    display: -webkit-inline-box;
+    display: -moz-inline-box;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    margin: 1.3em 0.5em;
+  }
+  .section-sec .madeBy img#gsap, .section-sec .madeBy img#chartjs, .section-sec .madeBy img#jquery, .section-sec .madeBy img#bootstrap, .section-sec .madeBy img#angular {
+    max-width: 20vw;
+    max-height: 8vh;
+  }
+
+  .socialLink {
+    margin: 2em;
+  }
+  .socialLink a {
+    width: 60px;
+    height: 30vh;
+    font-size: 2.4em;
+    padding: 3em;
+  }
+  .socialLink a :nth-child(1) {
+    color: #f3f3f3;
+  }
+  .socialLink a :nth-child(2) {
+    color: #7e5f4e;
+  }
+}

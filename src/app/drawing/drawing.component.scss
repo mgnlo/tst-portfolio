@@ -1,0 +1,208 @@
+@import '../dist/theme';
+$heroH: 100vh;
+$heroMobile: 800px;
+$bgH: 100vh;
+$bgHMobile: 100vh;
+$ani-1Layers: 6;
+$ani-2Layers: 3;
+$sketchs: 12;
+$darkBlue: #182320;
+@mixin transform($transforms) {
+  -moz-transform: $transforms;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+  transform: $transforms;
+}
+
+body {
+	padding: 0;
+	margin: 0;
+	background-color: $darkBlue;
+	color: $color-white;
+  overflow: hidden;
+}
+.hero {
+	height: $heroH;
+	overflow: hidden;
+  width: 100%;
+  padding: 5rem 0;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction:column;
+}
+.scene1 {
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  position: fixed;
+  z-index: -2;
+  height: $bgH;
+}
+.scene2 {
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  position: fixed;
+  top: 100;
+  z-index: -1;
+  height: $bgH;
+}
+.imgTitle {
+  font-size: 10rem;
+  position: fixed;
+  text-align: center;
+  color: white;
+  font-family: $font-ch-bold;
+  font-weight: 900;
+}
+.text {
+ margin: 10rem 5rem;
+   p {
+     font-size: 2.5rem;
+     font-family: $font-sec;
+     margin: 2rem 0;
+    }
+}
+.ani-1{
+  @for $i from 0 through $ani-1Layers {
+    .layer-#{$i} {
+      background-image: url('../../assets/images/cave' + $i + '.png');
+      height: $bgH;
+      background-position: bottom left;
+    }
+    @if $i == 4 {
+      .layer-#{$i} {
+        background-image: url('../../assets/images/cave' + $i + '.png');
+        background-position: -15rem;
+        height: $bgH;
+      }
+    }
+    @else if $i == 6 {
+      .layer-#{$i} {
+        background-image: url('../../assets/images/cave' + $i + '.png');
+        background-position: -50rem;
+        height: $bgH;
+      }
+    }
+  }
+}
+.wrapper{
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  width: 80vw;
+  margin: 10rem auto;
+  .pic>img{
+    height: 80vh;
+    margin: 8rem 10rem;
+  }
+}
+.bgs {
+  width: 85vw;
+  height: 100vh;
+  margin: auto;
+  overflow: hidden;
+  position: relative;//make multi div at same position
+  .delayed-section {
+    position: absolute;//make multi div at same position
+    overflow: hidden;
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+}
+.sketch-modal {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  width: 80vw;
+  margin: 5rem 10vw;
+  @for $i from 1 through $sketchs {
+    .sketch:nth-child(#{$i}){
+      border-radius: 1rem;
+      height: 30vh;
+      width: 30vh;
+      display: inline-flex;
+      background-position: center;
+      background-repeat: no-repeat;
+      // background-size: contain;
+      background-color: white;
+      margin: 2rem;
+    }
+    @if $i == 10 or $i == 11{
+      .sketch:nth-child(#{$i}){
+        background-size: cover;
+      }
+    }
+    @else {
+      .sketch:nth-child(#{$i}){
+        background-size: contain;
+      }
+    }
+  }
+}
+a2p-gallery{
+  margin-bottom: 5rem;
+}
+@media screen and (max-width: 768px) {
+  .content {
+    padding: 8rem 5rem;
+  }
+  .imgTitle {
+    font-size: 4rem;
+  }
+  .t1{ display: none;}
+  #hero1 ,#hero2{
+    margin: 0;
+  }
+  .layer {
+    height: $bgHMobile;
+  }
+  .wrapper{
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    margin: 8rem auto;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    margin-top: -1rem;
+    .pic, .text {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .pic{
+      width: 110vw;
+      img{
+        height: auto;
+        width: 100%;
+        margin: 0;
+      }
+    }
+  }
+  .text {
+    margin: 5rem 2.5rem;
+    z-index: 5;
+    p {
+      font-size: 1rem 1.5rem;
+    }
+  }
+  .bgs {
+    width: 100vw;
+    height: 40vh;
+  }
+  .ani-1{
+    .layer-4 {
+      background-position: -81rem;
+      @include transform(scale(1.3));
+    }
+    .layer-6 {
+      background-position: -68rem;
+    }
+  }
+}

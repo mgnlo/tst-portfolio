@@ -1,0 +1,201 @@
+@import '../dist/theme';
+body {
+  padding: 0;
+	margin: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+// helper
+// .center-xy {
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%,-50%);
+//   position: absolute;
+// }
+
+// sizing
+$bgWidth: 500px; //mobile 500px
+$bgHeight: $bgWidth; //mobile 500px
+$startPoint: 0px;
+$handleBarSize: 4px;
+$handleKnobSize: 30px;
+
+// colors
+$handleKnobColor: #fff;
+$handleKnobBorderColor: #000;
+$handleBarColor: $handleKnobBorderColor;
+
+.left, .right{
+  cursor: pointer;
+}
+.fa-angle-left, .fa-angle-right {
+  color: $color-prim;
+  margin: 0 5rem;
+}
+.compare {
+  position: relative;
+  max-width: 560px;
+  max-height: 870px;
+  width: 100vw;
+  height: 100vh;
+  // top: 6rem; //mobile 7rem
+  margin: 0 auto;
+  // background-size: cover;
+  // background-image: url('../../assets/images/ig.png');
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  // flex-direction: column;
+  // flex-wrap: wrap;
+  .comparison-slider-container {
+    max-width: $bgWidth;
+    max-height: $bgHeight;
+    width: 100%;
+    height: 100%; //mobile 50vh
+    margin: auto;
+    top: 50%; //mobile 50%
+    left: 50%;
+    transform: translate(-50%,-50%);
+    position: absolute;
+    // display: block;
+    // float: left;
+    z-index: 1;
+  }
+}
+
+.slider-col {
+  max-width: $bgWidth;
+  max-height: $bgHeight;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+
+  .slider-bg {
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+
+  .slider-caption {
+    position: absolute;
+    top: 0;
+    padding: 10px 16px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    margin: 20px;
+    font-size: 14px;
+  }
+}
+.slider-left {
+  width: $startPoint;
+  left: 0px;
+  .slider-bg-left {
+    width: $bgWidth;
+    background-image: url('../../assets/images/ps/ps_1.jpg');
+  }
+  .slider-caption-left {
+    left: 0;
+  }
+}
+.slider-right {
+  .slider-bg-right {
+    width: $bgWidth;
+    background-image: url('../../assets/images/ps/ps_1_1.jpg');
+  }
+  .slider-caption-right {
+    right: 0;
+  }
+}
+.handle {
+  background-color: $handleBarColor;
+  width: $handleBarSize;
+  height: 100%;
+  margin-left: -$handleBarSize/2;
+  position: absolute;
+  cursor: col-resize !important;
+  content: '';
+
+  // make entire container draggable
+  // &:before {
+  //   content: '';
+  //   width: $bgWidth*2;
+  //   height: $bgHeight;
+  //   margin-left: -$bgWidth;
+  //   position: absolute;
+  // }
+
+  &:after {
+    content: '';
+    width: $handleKnobSize;
+    height: $handleKnobSize;
+    background-color: $handleKnobColor;
+    border: $handleBarSize solid $handleKnobBorderColor;
+    // box-shadow: 0px 0px 0px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 100%;
+    top: 50%;
+    left: $startPoint;
+    margin: -($handleKnobSize/2)+$handleBarSize/2;
+    position: absolute;
+  }
+}
+@media screen and (max-width: 768px) {
+  .slider-col {
+    max-width: 100vw;
+    max-height: 100vh;
+    .slider-bg {
+      height: 100vh;
+      width: 100vw;
+    }
+    .slider-caption {
+      position: absolute;
+      top: 80vh;
+      padding: 10px 16px;
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      margin: 20px;
+      font-size: 22px;
+    }
+  }
+  .compare{
+    .comparison-slider-container{
+      width: 100vw;
+      height: 100vh;
+      max-width: 100vw;
+      max-height: 100vh;
+    }
+  }
+  .handle{
+    background-color: $handleBarColor;
+    width: $handleBarSize;
+    height: 100%;
+    margin-left: -$handleBarSize/2;
+    position: absolute;
+    cursor: col-resize !important;
+    content: '';
+    &:after {
+      top: 42%;
+    }
+  }
+  .slider-left {
+    .slider-bg-left {
+      width: 100vw;
+    }
+  }
+  .slider-right {
+    .slider-bg-right {
+      width: 100vw;
+    }
+  }
+  .fa-angle-left, .fa-angle-right {
+    color: $color-white;
+    margin: 0 1rem;
+  }
+  .left, .right{
+    z-index: 3;
+  }
+}
+

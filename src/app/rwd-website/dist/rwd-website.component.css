@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:ital,wght@1,600&display=swap");
+@import url("https://pro.fontawesome.com/releases/v5.10.0/css/all.css");
+@import url("https://fonts.googleapis.com/css2?family=Karla&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@1,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,900&display=swap");
+@font-face {
+  font-family: "GenJyuuGothic";
+  src: url("../../assets/font/GenJyuuGothic-Monospace-Normal.ttf") format("truetype");
+  font-family: "GenJyuuGothicBold";
+  src: url("../../assets/font/Gen-Jyuu-Gothic-Bold.ttf") format("truetype");
+  font-family: "GenJyuuGothicHeavy";
+  src: url("../../assets/font/Gen-Jyuu-Gothic-Heavy.ttf") format("truetype");
+}
+.btn {
+  background-color: #7e5f4eb7;
+  border-radius: 2rem;
+  color: white;
+  font-size: 2rem;
+}
+.btn:hover {
+  background-color: #7e5f4e;
+}

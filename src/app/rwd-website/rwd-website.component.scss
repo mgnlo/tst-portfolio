@@ -1,0 +1,11 @@
+@import '../dist/theme';
+.btn {
+  background-color: $color-trans-prim;
+  border-radius: 2rem;
+  color: $color-white;
+  font-size: 2rem;
+  &:hover {
+    background-color: $color-prim;
+
+  }
+}

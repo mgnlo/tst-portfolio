@@ -1,0 +1,25 @@
+<app-nav></app-nav>
+<body>
+  <div class='d-flex justify-content-around align-items-center'>
+    <div class='left' (click)='prev(nowPicId)'><i class="fas fa-angle-left fa-5x"></i></div>
+    <div class='compare'>
+      <div class="comparison-slider-container" id="compare">
+        <!-- RIGHT IMAGE -->
+        <div class="slider-col slider-right" id="r">
+          <div class="slider-bg slider-bg-right">
+            <p class="slider-caption slider-caption-right">After</p>
+          </div>
+        </div>
+        <!-- LEFT IMAGE -->
+        <div class="slider-col slider-left" id="l">
+          <div class="slider-bg slider-bg-left">
+            <p class="slider-caption slider-caption-left">Before</p>
+          </div>
+        </div>
+        <!-- DRAG HANDLE -->
+        <div class="handle" id="handle"></div>
+      </div>
+    </div>
+    <div class='right' (click)='next(nowPicId)'><i class="fas fa-angle-right fa-5x"></i></div>
+  </div>
+</body>

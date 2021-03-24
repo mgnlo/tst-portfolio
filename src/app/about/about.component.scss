@@ -1,0 +1,59 @@
+@import '../dist/theme';
+// @import '../../../node_modules/lightbox2/dist/css/lightbox';
+
+body{
+  height: 400vh;
+}
+h1 {
+  font-size: 8rem;
+  font-family: $font-prim;
+  color: $color-prim;
+  margin-top: 8rem;
+}
+#svg {
+  overflow: visible;
+  margin-top: 40vh;
+}
+.ball {
+  fill: $color-prim;
+  visibility: hidden;
+}
+
+.line {
+  fill: none;
+  stroke: $color-trans-prim;
+  stroke-width: 2px;
+}
+.text {
+  fill: $color-trans-prim;
+  font-size: 1.5rem;
+  font-family: $font-prim;
+  visibility: hidden;
+}
+.detail {
+  fill: $color-prim;
+  font-size: 1rem;
+  font-family: $font-prim;
+  visibility: hidden;
+}
+
+.theLine {
+  stroke: $color-prim;
+  fill: none;
+  stroke-width: 5px;
+}
+#svg{
+  margin-top: 100px;
+}
+
+@media screen and (max-width: 768px) {
+  .text{
+    font-size:2rem;
+  }
+  .detail{
+    font-size:1.04rem;
+  }
+  #svg{
+    margin-top: 100px;
+  }
+}

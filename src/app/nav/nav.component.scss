@@ -1,0 +1,293 @@
+@import url("https://pro.fontawesome.com/releases/v5.10.0/css/all.css");
+@import '../dist/theme';
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* HEADER */
+
+.header {
+  font-family: $font-prim, sans-serif;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  @include flexbox;
+  @include justify-content(space-between);
+  padding: 5px;
+  z-index: 6;
+  backdrop-filter: blur(2px) opacity(100%);;
+  @include transition(top 0.3s);
+
+  .title {
+    text-decoration: none;
+    color: $color-sec;
+    font-size: 30px;
+    margin: 0 5px;
+  }
+}
+
+.menu-items {
+  list-style: none;
+  @include flexbox;
+  align-items: center;
+
+  li .menu-item {
+    text-decoration: none;
+    color: $color-sec;
+    font-size: 16px;
+    padding: 5px;
+    width: 110px; //don't use vw it will be full in computer view
+    @include transition(background-color 0.3s ease-in-out);
+  }
+}
+
+.socialLink {
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+  list-style-type: none;
+
+  a {
+    font-size: 18px;
+    padding: 5px 0;
+    width: 50px;
+    text-decoration: none;
+    color: $color-sec;
+    cursor: pointer;
+    text-align: center;
+    @include justify-content(center);
+    display: inline-block;
+    position: relative;
+  }
+}
+
+/* MENU BUTTON */
+
+.menu-btn {
+  position: relative;
+  display: none;
+  margin: 2em 1.5em;
+  @include justify-content(center);
+  align-items: center;
+  width: 3em;
+  height: 3em;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.menu-btn__lines {
+
+  width: 3em;
+  height: 0.3em;
+  border-width: 3em;
+  background-color: $color-sec;
+  @include transition(all 0.2s ease-in-out);
+
+  &:before,
+  &:after {
+    @extend .menu-btn__lines;
+    content: "";
+    position: absolute;
+  }
+
+  &:before {
+    @include transform(translateY(-0.5em));
+  }
+
+  &:after {
+    @include transform(translateY(0.5em));
+  }
+}
+
+/*NAV*/
+
+.menu-items {
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+  font-size: 14px;
+
+  li {
+    position: relative;
+    float: left;
+    list-style-type: none;
+
+    > {
+      .menu-item {
+        display: inline-block;
+        text-decoration: none;
+        padding: 10px 0;
+        @include transition(all 0.1s ease-in);
+        position: relative;
+      }
+
+      ul > li .menu-item {
+        display: block;
+        border-top: 1px solid #e7e7e7;
+      }
+    }
+
+    .menu-item:hover,
+    > ul > li .menu-item:hover {
+      background: $color-sec;
+      color: $color-hover-prim;
+    }
+
+    &:hover .menu-item {
+      background: $color-hover-prim;
+      color: $color-sec;
+    }
+
+    &.active {
+      pointer-events: none;
+    }
+  }
+}
+
+#pic {
+  width: 50vw;
+  position: relative;
+  clip-path: circle(210px at 35em 50%);
+}
+
+/* START ANIMATED X */
+
+.menu-btn.open .menu-btn__lines {
+  @include transform(translateX(2em));
+  background-color: transparent;
+
+  &:before {
+    @include transform(rotate(45deg) translate(-1.5em, 1.5em));
+    background-color: $color-white;
+  }
+
+  &:after {
+    @include transform(rotate(-45deg) translate(-1.5em, -1.5em));
+    background-color: $color-white;
+  }
+}
+
+/* END ANIMATED X */
+
+/* DROPDOWN ANIMATED START*/
+
+.dropdown {
+  perspective: 1000;
+  cursor: pointer;
+
+  ~ ul {
+    > li {
+      transform-origin: top center;
+      opacity: 0;
+    }
+
+    $dropdownNum: 7;
+    @for $i from 1 to $dropdownNum {
+      &:nth-child(#{$i}) li {
+        animation: animate 300ms ease-in-out forwards;
+        animation-delay: ($i - 2) * 150ms;
+      }
+    }
+  }
+}
+
+@include keyframes(animate) {
+  0% {
+    opacity: 0;
+    @include transform(rotateX(-90deg));
+  }
+
+  50% {
+    @include transform(rotateX(20deg));
+  }
+
+  100% {
+    opacity: 1;
+    @include transform(rotateX(0deg));
+  }
+}
+
+/* DROPDOWN ANIMATED END */
+
+
+@media screen and (max-width: 768px) {
+
+  .fixToCenter {
+    margin: 20vh 0;
+  }
+
+  .header .title {
+    font-size: 30px;
+    margin: 0 5px;
+  }
+
+  .menu-btn {
+    @include flexbox;
+    width: 36px;
+    height: 36px;
+    margin: 8px;
+  }
+
+  .menu-items {
+    @include flex-direction(column);
+    @include justify-content(space-around);
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 100vh;
+    @include transform(translateX(100vw));
+    background-color: $color-prim;
+    @include transition(transform 0.3s ease-in-out);
+
+    &.open {
+      @include transform(translateX(0));
+      overflow-y: scroll;
+    }
+
+    li {
+      width: 100vw;
+      // height: 100vh;
+      margin: 1em 0;
+
+      .menu-item {
+        color: #b8aaa3;
+        font-size: 30px;
+        @include flexbox;
+        @include justify-content(center);
+        align-items: center;
+        width: 100vw;
+        height: 10vh;
+      }
+
+      &:hover .menu-item {
+        background: $color-prim;
+        color: #dbdbdb;
+      }
+
+      > ul > li .menu-item {
+        border-top: 1px solid $color-prim;
+
+        &:hover {
+          background: $color-prim;
+          color: $color-third;
+        }
+      }
+
+      ul li a {
+        background: $color-prim;
+        color: #b8b8b8;
+      }
+    }
+  }
+
+  .socialLink {
+    a{
+      font-size: 25px;
+      width: 65px;
+    }
+  }
+}

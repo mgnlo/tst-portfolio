@@ -1,0 +1,75 @@
+<body>
+  <app-nav></app-nav>
+  <!-- <app-about></app-about> -->
+  <section class="section-fst">
+    <div class="custom-shape-divider-bottom-1607615182">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path
+          d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+          class="shape-fill">
+        </path>
+      </svg>
+    </div>
+    <div class="flex">
+      <h1 class="title">Hi! I'm Megan</h1>
+        <p>Even miracles take a little time. If you keep on believing, the dream that you wish will come true.</p>
+        <footer class="blockquote-footer font-italic">Disney quote from " Cinderella "</footer>
+        <button class="btn" routerLink="/about">about me</button>
+    </div>
+  </section>
+  <section class="section-sec">
+    <div class="row justify-content-around algin-items-center all">
+      <div class="about">
+        <h1>My personality</h1>
+        <p>
+        I graduated from Ming Chuan University with a major in Digital Media Design.<br/><br/>
+        I usually Like to observe and try different things , also have lots of hobbies, things like watching movies, jogging, singing, traveling in my leisure time.
+        </p>
+      </div>
+      <div class="chart">
+        <canvas baseChart
+            [datasets]="raderChartData"
+            [options]="raderChartOptions"
+            [labels]="raderChartLabels"
+            [chartType]="radarChartType" >
+        </canvas>
+      </div>
+    </div>
+    <div class="gird ports">
+      <div class="port">
+
+      </div>
+      <div class="port">
+
+      </div>
+      <div class="port">
+
+      </div>
+      <div class="port">
+
+      </div>
+      <div class="port">
+
+      </div>
+      <div class="port">
+
+      </div>
+    </div>
+    <div class="grid refer">
+      <p>This website is made by using following technologies.</p>
+      <div class="madeBy">
+        <img src="https://ihatetomatoes.net/wp-content/uploads/2016/09/img_greensock.png" id='gsap' alt="gsap" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/220px-Node.js_logo.svg.png" id="nodejs" />
+        <img src="https://pivisions.com/storage/app/media/tech/techlogos-02.png" id="angular" />
+        <img src="https://pivisions.com/storage/app/media/tech/techlogos-03.png" id='bootstrap'/>
+        <img src="https://pivisions.com/storage/app/media/tech/techlogos-04.png" id='jquery'/>
+        <img src="https://miro.medium.com/max/4000/1*H-9KGBGNHfvkd4F4MOY__g.png" id='sass'/>
+        <img src="https://www.antgit.com/pic/6ee101196d2bbaf3f7fd586f5752e647.png" id='chartjs'/>
+        <img src="https://user-images.githubusercontent.com/30186107/29488525-f55a69d0-84da-11e7-8a39-5476f663b5eb.png" alt="html, css, js" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png" id="ts"/>
+        <img src="https://upload.wikimedia.org/wikipedia/zh/thumb/b/bd/Font_Awesome_Logo.svg/1200px-Font_Awesome_Logo.svg.png" id="fontawsome"/>
+      </div>
+    </div>
+  </section>
+</body>
+

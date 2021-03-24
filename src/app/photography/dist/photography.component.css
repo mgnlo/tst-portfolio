@@ -1,0 +1,250 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:ital,wght@1,600&display=swap");
+@import url("https://pro.fontawesome.com/releases/v5.10.0/css/all.css");
+@import url("https://fonts.googleapis.com/css2?family=Karla&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@1,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,900&display=swap");
+@font-face {
+  font-family: "GenJyuuGothic";
+  src: url("../../assets/font/GenJyuuGothic-Monospace-Normal.ttf") format("truetype");
+  font-family: "GenJyuuGothicBold";
+  src: url("../../assets/font/Gen-Jyuu-Gothic-Bold.ttf") format("truetype");
+  font-family: "GenJyuuGothicHeavy";
+  src: url("../../assets/font/Gen-Jyuu-Gothic-Heavy.ttf") format("truetype");
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.ngx-gallery {
+  display: inline-block;
+  margin-bottom: 20px;
+  z-index: 8;
+}
+
+.introSec .intro {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  text-align: center;
+  font-size: 6rem;
+  font-family: "Fira Sans Extra Condensed", GenJyuuGothic;
+  color: #7e5f4e;
+  position: absolute;
+  z-index: 3;
+  margin: 20rem 0;
+}
+.introSec .intro .arrow {
+  vertical-align: middle;
+  font-size: 6rem;
+  margin: 30rem 0;
+  position: absolute;
+  z-index: 3;
+}
+
+.gridBlock {
+  opacity: 0;
+  background-size: cover;
+  background-color: darkgray;
+  display: block;
+  position: absolute;
+}
+
+.grid-container {
+  width: 100vw;
+  height: 400vh;
+  position: absolute;
+}
+
+.grid {
+  z-index: 1;
+  width: 70vw;
+  height: 80vw;
+  margin: 0 calc(100vw / 20 * 3);
+  position: absolute;
+}
+
+.gridLayer {
+  top: -10rem;
+  left: 0;
+  width: 100%;
+  height: 120vh;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  will-change: transform;
+  transform-origin: 44.951% 50%;
+  cursor: crosshair;
+  display: block;
+  margin: auto;
+}
+.gridLayer .nav-head {
+  opacity: 0;
+  position: absolute;
+  z-index: 1;
+  content: "";
+  transform: translateZ(0);
+  background: transparent;
+  display: none;
+  font-size: 4rem;
+  font-family: "Lobster", GenJyuuGothic;
+  color: #eeeeeeef;
+}
+.gridLayer:hover .nav-head {
+  display: block;
+  z-index: 10;
+  overflow: hidden;
+  opacity: 1;
+}
+.gridLayer .gridBlock:nth-child(1) {
+  top: 47.5vw;
+  left: 2vw;
+  width: 10vw;
+  height: 10vw;
+}
+.gridLayer .gridBlock:nth-child(2) {
+  top: 60vw;
+  left: -7vw;
+  width: 30vw;
+  height: 30vw;
+}
+.gridLayer .gridBlock:nth-child(3) {
+  top: 31vw;
+  left: -2vw;
+  width: 14vw;
+  height: 14vw;
+}
+.gridLayer .gridBlock:nth-child(4) {
+  top: 17.5vw;
+  left: 15vw;
+  width: 40vw;
+  height: 40vw;
+}
+.gridLayer .gridBlock:nth-child(5) {
+  z-index: 1;
+}
+.gridLayer .gridBlock:nth-child(5) a {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gridLayer .gridBlock:nth-child(5) svg {
+  width: 1.75vw;
+}
+.gridLayer .gridBlock:nth-child(5) {
+  top: 35vw;
+  left: 58vw;
+  width: 6vw;
+  height: 6vw;
+}
+.gridLayer .gridBlock:nth-child(6) {
+  top: 60vw;
+  left: 26vw;
+  width: 22vw;
+  height: 22vw;
+}
+.gridLayer .gridBlock:nth-child(7) {
+  top: 17.5vw;
+  left: 58vw;
+  width: 15vw;
+  height: 15vw;
+}
+.gridLayer .gridBlock:nth-child(8) {
+  top: 69vw;
+  left: 51vw;
+  width: 13vw;
+  height: 13vw;
+}
+.gridLayer .gridBlock:nth-child(9) {
+  top: 44vw;
+  left: 58vw;
+  width: 22vw;
+  height: 22vw;
+}
+
+@media only screen and (max-width: 580px) {
+  .introSec .intro {
+    font-size: 5rem;
+    margin: unset;
+    margin-top: 18vh;
+  }
+  .introSec .intro .arrow {
+    margin: unset;
+    margin-top: 36rem;
+  }
+
+  .grid {
+    margin: 0;
+    width: 90vw;
+    height: 120vh;
+  }
+
+  .gridLayer .gridBlock:nth-child(1) {
+    top: 115vw;
+    left: 68.5vw;
+    width: 12vw;
+    height: 12vw;
+  }
+
+  .gridLayer .gridBlock:nth-child(2) {
+    top: 109vw;
+    left: 48vw;
+    width: 18vw;
+    height: 18vw;
+  }
+
+  .gridLayer .gridBlock:nth-child(3) {
+    top: 109vw;
+    left: 11.5vw;
+    width: 34vw;
+    height: 34vw;
+  }
+
+  .gridLayer .gridBlock:nth-child(4) {
+    top: 31vw;
+    left: 11.5vw;
+    width: 75vw;
+    height: 75vw;
+  }
+
+  .gridLayer .gridBlock:nth-child(5) {
+    top: 145vw;
+    left: 29vw;
+    width: 15vw;
+    height: 15vw;
+  }
+
+  .gridLayer .gridBlock:nth-child(6) {
+    top: 131vw;
+    left: 48vw;
+    width: 38vw;
+    height: 38vw;
+  }
+
+  .gridLayer .gridBlock:nth-child(7) {
+    top: 171.5vw;
+    left: 48vw;
+    width: 15vw;
+    height: 15vw;
+  }
+
+  .gridLayer .gridBlock:nth-child(8) {
+    top: 188vw;
+    left: 66vw;
+    width: 20vw;
+    height: 20vw;
+  }
+
+  .gridLayer .gridBlock:nth-child(9) {
+    top: 163vw;
+    left: 19vw;
+    width: 26vw;
+    height: 26vw;
+  }
+}

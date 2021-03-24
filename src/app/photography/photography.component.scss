@@ -1,0 +1,197 @@
+@import '../dist/theme';
+//colors
+$color_silver_chalice_approx: darkgray;
+
+// $sizeList: 5vw, 10vw, 15vw, 20vw, 30vw;
+// $sizeListFor580px: 15vw, 27vw, 40vw;
+$sizeListForAll: (
+  size1: (mid:(mw:12vw, mh:12vh), lg:(lw:10vw, lh:9vh)),
+  size2: (mid:(mw:18vw, mh:18vh), lg:(lw:30vw, lh:30vh)),
+  size3: (mid:(mw:34vw, mh:34vh), lg:(lw:14vw, lh:26vh)),
+  size4: (mid:(mw:75vw, mh:75vh), lg:(lw:40vw, lh:40vh)), //center pic
+  size5: (mid:(mw:15vw, mh:15vh), lg:(lw:6vw, lh:9vh)),
+  size6: (mid:(mw:38vw, mh:38vh), lg:(lw:22vw, lh:45vh)),
+  size7: (mid:(mw:15vw, mh:15vh), lg:(lw:15vw, lh:20vh)),
+  size8: (mid:(mw:20vw, mh:20vh), lg:(lw:13vw, lh:15vh)),
+  size9: (mid:(mw:26vw, mh:26vh), lg:(lw:22vw, lh:20vh))
+);
+$topLeft: (
+  type1: (tlt: 47.5vw, tll: 2vw),
+  type2: (tlt: 60vw, tll: -7vw),
+  type3: (tlt: 31vw, tll: -2vw),
+  type4: (tlt: 17.5vw, tll: 15vw), //center pic
+  type5: (tlt: 35vw, tll: 58vw),
+  type6: (tlt: 60vw, tll: 26vw),
+  type7: (tlt: 17.5vw, tll: 58vw),
+  type8: (tlt: 69vw, tll: 51vw),
+  type9: (tlt: 44vw, tll: 58vw)
+);
+$topLeftFor580px: (
+  type1: (tlt: 115vw, tll: 68.5vw),
+  type2: (tlt: 109vw, tll: 48vw),
+  type3: (tlt: 109vw, tll: 11.5vw),
+  type4: (tlt: 31vw, tll: 11.5vw),
+  type5: (tlt: 145vw, tll: 29vw),
+  type6: (tlt: 131vw, tll: 48vw),
+  type7: (tlt: 171.5vw, tll: 48vw),
+  type8: (tlt: 188vw, tll: 66vw),
+  type9: (tlt: 163vw, tll: 19vw)
+);
+
+@function index-to-key($get-which-map ,$index) {
+  $keys: map-keys($get-which-map); // A list of all keys in a map
+  @return nth($keys, $index);
+}
+
+$total: 9;
+
+* {
+  //this will effect bootstrap wheither align well
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.ngx-gallery {
+  display: inline-block;
+  margin-bottom: 20px;
+  z-index: 8;
+}
+.introSec{
+  .intro{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    text-align: center;
+    font-size: 6rem;
+    font-family: $font-prim;
+    color: $color-prim;
+    position: absolute;
+    z-index: 3;
+    margin: 20rem 0;
+    .arrow{
+      vertical-align: middle;
+      font-size: 6rem;
+      margin: 30rem 0;
+      position: absolute;
+      z-index: 3;
+    }
+  }
+}
+.gridBlock {
+	opacity: 0;
+	background-size: cover;
+	background-color: $color_silver_chalice_approx;
+	display: block;
+  position: absolute;
+}
+.grid-container {
+  width: 100vw;
+	height: 400vh;
+	position: absolute;
+}
+.grid {
+  // top: 0;
+	// left: 0;
+	z-index: 1;
+	width: 70vw;
+	height: 80vw;
+	margin: 0 calc(100vw / 20 * 3);
+	position: absolute;
+}
+
+.gridLayer {
+  top: -10rem;
+  left: 0;
+  width: 100%;
+  height: 120vh;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  will-change: transform;
+  transform-origin: 44.951% 50%;
+  cursor: crosshair;
+  display: block;
+  margin: auto;
+  .nav-head{
+    opacity:0;
+    position: absolute;
+    z-index: 1;
+    content:"";
+    transform: translateZ(0);
+    background:transparent;
+    display: none;
+    font-size: 4rem;
+    font-family: $font-forth;
+    color: $color-hover-third;
+  }
+  &:hover {
+    .nav-head {
+      display:block;
+      z-index: 10;
+      overflow:hidden;
+      opacity: 1;
+    }
+  }
+  @for $i from 1 through $total {
+    @if $i == 5 {
+      .gridBlock:nth-child(#{$i}){
+        z-index: 1;
+        a {
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        svg {
+          width: 1.75vw;
+        }
+      }
+    }
+    .gridBlock:nth-child(#{$i}) {
+      // $size: nth($sizeList, random(length($sizeList)));
+      $size: map-get(map-get($sizeListForAll, index-to-key($sizeListForAll, $i)), lg);
+      top: map-get(map-get($topLeft, index-to-key($topLeft, $i)), tlt);
+      left: map-get(map-get($topLeft, index-to-key($topLeft, $i)), tll);
+      width:  map-get($size,lw);
+      height: map-get($size,lw);
+    }
+  }
+}
+
+@media only screen and(max-width: 580px) {
+  .introSec .intro{
+    font-size: 5rem;
+    margin: unset;
+    margin-top: 18vh;
+    .arrow{
+      margin: unset;
+      margin-top: 36rem;
+    }
+  }
+	.grid {
+		margin: 0;
+		width: 90vw;
+    height: 120vh;
+  }
+  @for $i from 1 through $total {
+    .gridLayer{
+      // @if $i == 7 or $i == 8 {
+      //   &:nth-child(#{$i}) .gridBlock {
+      //     // display: none;
+      //   }
+      // }
+      // @else {
+        .gridBlock:nth-child(#{$i}) {
+          // $size: nth($sizeListFor580px, random(length($sizeListFor580px)));
+          $size: map-get(map-get($sizeListForAll, index-to-key($sizeListForAll, $i)), mid);
+          top: map-get(map-get($topLeftFor580px, index-to-key($topLeftFor580px, $i)), tlt);
+          left: map-get(map-get($topLeftFor580px, index-to-key($topLeftFor580px, $i)), tll);;
+          width: map-get($size,mw);
+          height: map-get($size,mw);
+        }
+      // }
+    }
+  }
+}
+

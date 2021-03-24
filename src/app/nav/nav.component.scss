@@ -80,9 +80,9 @@
 
 .menu-btn__lines {
 
-  width: 3em;
+  width: 25px;
   height: 0.3em;
-  border-width: 3em;
+  border-width: 20px;
   background-color: $color-sec;
   @include transition(all 0.2s ease-in-out);
 

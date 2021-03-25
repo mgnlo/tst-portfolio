@@ -46,7 +46,7 @@ body {
 .comb {
   @include inline-flex;
   margin-top: -1rem;
-  z-index: 2;
+  z-index: 1;
   .inner {
     cursor: pointer;
     height: 100%;
@@ -206,7 +206,7 @@ body {
   right:0;
   opacity:0;
   visibility:hidden;
-  z-index: 7;
+  z-index: 2;
 }
 .modal {
   background:$color-white;
@@ -221,7 +221,7 @@ body {
   display: none;
   margin:auto;
   padding:20px;
-  z-index: 4;
+  z-index: 3;
   &.active{
     display: contents;
   }
@@ -232,7 +232,7 @@ body {
     margin: 0 15px;
   }
   .imgs{
-    z-index: 5;
+    z-index: 4;
     .img{
       height: 75vh;
       margin-top: 4rem;
@@ -263,19 +263,22 @@ body {
   background:none;
   border:none;
   position:absolute;
-  font-size:20px;
   right:10px;
-  top:10px;
+  top: 46px;
   color:$color-prim;
   outline:none;
-  z-index: 7;
+  z-index: 5;
+  font-size: 29px;
 }
 .left, .thumbs, .right {
   z-index: 5;
   cursor: pointer;
 }
 @media screen and (max-width: 768px) {
-  .close-modal {right: 0px;}
+  .close-modal {
+    font-size: 29px;
+    top: 46px;
+  }
   .honeycombs {
     width: 100vw;
   }

@@ -51,11 +51,6 @@ $total: 9;
   padding: 0;
   box-sizing: border-box;
 }
-.ngx-gallery {
-  display: inline-block;
-  margin-bottom: 20px;
-  z-index: 8;
-}
 .introSec{
   .intro{
     width: 100vw;
@@ -67,12 +62,12 @@ $total: 9;
     font-family: $font-prim;
     color: $color-prim;
     position: absolute;
-    z-index: 3;
+    z-index: 2;
     top: 20vh;
     .arrow{
       top: 40vh;
       position: absolute;
-      z-index: 3;
+      z-index: 2;
     }
   }
 }
@@ -123,7 +118,7 @@ $total: 9;
   &:hover {
     .nav-head {
       display:block;
-      z-index: 10;
+      z-index: 3;
       overflow:hidden;
       opacity: 1;
     }
@@ -169,7 +164,7 @@ $total: 9;
   right:0;
   opacity:0;
   visibility:hidden;
-  z-index: 7;
+  z-index: 2;
 }
 .modal {
   background:$color-white;
@@ -226,12 +221,12 @@ $total: 9;
   background:none;
   border:none;
   position:absolute;
-  font-size:20px;
-  right:10px;
-  top:10px;
+  font-size: 29px;
+  right: 10px;
+  top: 54px;
   color:$color-prim;
   outline:none;
-  z-index: 7;
+  z-index: 5;
 }
 .left, .thumbs, .right {
   z-index: 5;

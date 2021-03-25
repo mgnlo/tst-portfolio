@@ -21,7 +21,7 @@ function showBothCaptions(): void {
 
 function addToPsArr(total: number): {id: number; before: string; after: string}[] {
   for (let i = 1; i <= total; i++){
-    const tmp = {id: i, before: '../../assets/images/ps/ps_' + i + '.jpg', after: '../../assets/images/ps/ps_' + i + '_1.jpg'};
+    const tmp = {id: i, before: '/assets/images/ps/ps_' + i + '.jpg', after: '/assets/images/ps/ps_' + i + '_1.jpg'};
     psArr.push(tmp);
   }
   return psArr;

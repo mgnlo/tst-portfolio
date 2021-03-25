@@ -61,9 +61,6 @@
     @include justify-content(center);
     display: inline-block;
     position: relative;
-    .fa-inverse {
-      color:#f0dfd6;
-    }
   }
 }
 
@@ -215,7 +212,7 @@
 @media screen and (max-width: 768px) {
 
   .fixToCenter {
-    position: fixed;
+    position: absolute;
     top: 30vh;
   }
 

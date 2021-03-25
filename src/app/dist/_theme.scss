@@ -54,13 +54,13 @@ $color-hover-third: #eeeeeeef;
 $defaultFont: sans-serif;
 $font-ch: GenJyuuGothic;
 $font-chb: GenJyuuGothicBold;
-$font-ch-bold: (Bebas Neue, $font-ch);
+$font-ch-bold: (BebasNeue, $font-ch);
 $font-ch-morebold: (Karla, $font-chb);
 $font-prim: (FiraSansExtraCondensed, AvenirNextCondBoldItalic, $font-ch);
 $font-sec: (Karla, $font-ch);
 $font-third: (Ubuntu,$font-ch);
 $font-forth: (Lobster, $font-ch);
-$font-fifth: (Lato, $font-ch);
+$font-fifth: (AvenirNextCondBoldItalic, $font-ch);
 
 //mobile size
 $btn-ms: 16px;

@@ -3,10 +3,10 @@ import {gsap} from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import * as $ from 'jquery';
 
+const mobileSize = 768;
 const getPosition = (elem: Element, target: Element) => {
   const targetRect = target.getBoundingClientRect();
   const elemRect = elem.getBoundingClientRect();
-
   gsap.set(elem, {
     x: 0,
     y: 0,
@@ -23,33 +23,39 @@ const getPosition = (elem: Element, target: Element) => {
   };
 };
 const getSpot = (spotName: string, spotToGet: string, num: number) => {
-  const imgs: string[] = new Array <string> ();
+  const imgs = new Array <string> ();
   for (let i = 0; i < num; i++) {
-    imgs.push('../../assets/images/photos/' + spotToGet + '_' + num + '.jpg');
+    imgs.push('../../assets/images/photos/' + spotToGet + '_' + i + '.jpg');
   }
   const aSpot = { spot: spotName, cover: '../../assets/images/photos/' + spotToGet + '_0.jpg', img: imgs};
   return aSpot;
 };
-const zoomOut = () => {
-  gsap.timeline({
+const zoomOut = (fromComp: boolean) => {
+  const height = (fromComp) ? innerHeight / 4 : innerHeight * 3;
+  const timeline = gsap.timeline({
       scrollTrigger: {
         trigger: '.grid-container',
         start: 'top top',
-        end: () => innerHeight * 4,
-        scrub: true,
-        pin: '.grid',
-        anticipatePin: 1
+        end: height, // adjust space height
+        pin: '.gridLayer',
+        scrub: true
+        // anticipatePin: 0.2,
       }
     })
     .set('.gridBlock', { autoAlpha: 0 })
-    .to('.gridBlock', {
-      duration: 0.1,
-      autoAlpha: 1
-    }, 0.001)
-    .from('.gridLayer', {
-      scale: 3.3333,
-      ease: 'none',
-    });
+    .to('.gridBlock', { duration: 0.05, autoAlpha: 1});
+  if (fromComp) {
+    timeline.from('.gridLayer', { duration: 4, scale: 4, ease: 'none'}).to('.gridLayer', {
+      onComplete: () => {
+        if (timeline.scrollTrigger){
+          timeline.scrollTrigger.kill(true);
+          timeline.progress(1);
+          $('.introSec').remove();
+        }
+      }});
+  } else {
+    timeline.from('.gridLayer', { scale: 3.3333, ease: 'none', top: '327px'}).to('.gridLayer', {top: '-80px' });
+  }
 };
 
 const cursorSpot = () => {
@@ -85,7 +91,7 @@ const taichung = getSpot('Taichung', 'taichung', 5);
 const taoyuan = getSpot('Taoyuan', 'taoyuan', 1);
 const newTaipei = getSpot('New Taipei City', 'newTaipei', 5);
 // tslint:disable-next-line: prefer-const
-let photos: Array<{spot: any; cover: any; img: any}> = [];
+let photos: Array<{spot: string; cover: string; img: string[]}> = [];
 photos.push(hehuan);
 photos.push(qingjing);
 photos.push(macao);
@@ -107,16 +113,18 @@ photos.push(newTaipei);
 export class PhotographyComponent implements OnInit {
 
   constructor() { }
-
+  allPhoto = photos;
   covers = photos.map(a => a.cover);
   spots = photos.map(a => a.spot);
 
   ngOnInit(): void {
+    $('html').css('overflow-x', 'hidden');
+    const fromComp = ( screen.width >= mobileSize ) ? true : false;
     gsap.registerPlugin(ScrollTrigger);
-    gsap.set($('.nav-head'), {autoAlpha: 0});
-    gsap.set($('.gridBlock'), { backgroundImage: i => `url(${this.covers[i]})`});
+    gsap.set('.nav-head', {autoAlpha: 0});
+    gsap.set('.gridBlock', { backgroundImage: i => `url(${this.covers[i]})`});
     $(window).on('load', () => {
-      gsap.to($('.arrow'), {
+      gsap.to('.arrow', {
         y: 10,
         yoyo: true,
         ease: 'power2',
@@ -127,7 +135,7 @@ export class PhotographyComponent implements OnInit {
         autoAlpha: 1
       });
     });
-    zoomOut();
+    zoomOut(fromComp);
     cursorSpot();
     /*$('.gridBlock').on('click', (e) => {
        const int = Number(e.target.id);
@@ -140,6 +148,57 @@ export class PhotographyComponent implements OnInit {
       if ( keys[i].includes('img') ){
         gallarySet.add({ small: vals[i], medium: vals[i], big: vals[i]});
       }
+    }
+  }
+
+  openModal(id: number): void{
+    const mH = Number($('#modal_' + id).height());
+    const wH = Number($(window).height());
+    const tl2 = gsap.timeline({});
+    $('#modal_' + id).addClass('active');
+    tl2.to($('.modal-overlay'), {autoAlpha: 1, duration: 0.1});
+    // tslint:disable-next-line: max-line-length
+    tl2.to($('#modal_' + id), { y: -(wH) + mH, duration: 0.6, delay: 0.2, ease: 'Elastic.easeOut.config(1.1, 0.7)'});
+    let scrollToTop = window.setInterval(() => {
+      let pos = window.pageYOffset;
+      if (pos > 0) {
+          window.scrollTo(0, pos - 20); // how far to scroll on each step
+      } else {
+          window.clearInterval(scrollToTop);
+      }
+    }, 16);
+    $('html').css('overflow', 'hidden');
+  }
+  closeModal(i?: number): void {
+    if (i === undefined) {$('.modal').removeClass('active'); }
+    const mH = Number($('.modal').height());
+    const wH = Number($(window).height());
+    const tl2 = gsap.timeline({});
+    $('#modal_' + i).removeClass('active');
+    tl2.to($('.modal-overlay'), {delay: 0.55, autoAlpha: 0, duration: 0.1});
+    tl2.to($('.modal'), { y: wH + mH, ease: 'Back.easeIn', force3D: true, duration: 0.1});
+    $('html').css('overflow-y', 'scroll');
+  }
+  thumbOnClick(i: number, iii: number): void {
+    $('#thumb_' + i + '_' + iii).addClass('active').siblings('.thumbnail').removeClass('active');
+    $('#img_' + i + '_' + iii).addClass('active').siblings('.img').removeClass('active');
+  }
+  prev(i: number): void{
+    $('#modal_' + i).removeClass('active');
+    const lastPhotoId = this.allPhoto.length - 1;
+    if ((i - 1) === -1) {
+      $('#modal_' + (lastPhotoId)).addClass('active');
+    } else {
+      $('#modal_' + (i - 1)).addClass('active');
+    }
+  }
+  next(i: number): void{
+    $('#modal_' + i).removeClass('active');
+    const lastPhotoId = this.allPhoto.length - 1;
+    if ((i + 1) === lastPhotoId + 1){
+      $('#modal_0').addClass('active');
+    } else {
+      $('#modal_' + (i + 1)).addClass('active');
     }
   }
 }

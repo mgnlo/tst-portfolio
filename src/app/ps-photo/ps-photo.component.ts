@@ -2,12 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
 import {gsap, TimelineMax, TweenMax} from 'gsap';
 import Draggable from 'gsap/Draggable';
-const comparisonSliderWidth = 500;
-const comparisonSliderHeight = comparisonSliderWidth;
-
 
 const mobileSize = 768;
-const startPosition = (comparisonSliderWidth / 100) * 50;
 let psArr: Array<{id: number;  before: string; after: string; }> = [];
 
 function showLeftCaption(): void {
@@ -31,6 +27,15 @@ function addToPsArr(total: number): {id: number; before: string; after: string}[
   return psArr;
 }
 
+function getTransform3dValue(el: JQuery<HTMLElement>): number[]{
+  const results = el.css('-webkit-transform').match(/matrix(?:(3d)\(-{0,1}\d+(?:, -{0,1}\d+)*(?:, (-{0,1}\d+))(?:, (-{0,1}\d+))(?:, (-{0,1}\d+)), -{0,1}\d+\)|\(-{0,1}\d+(?:, -{0,1}\d+)*(?:, (-{0,1}\d+))(?:, (-{0,1}\d+))\))/);
+  if (!results) { return [0, 0, 0]; }
+  if (results[1] === '3d') { return results.slice(2, 5).map(Number); }
+
+  results.push('0');
+  return results.slice(5, 8).map(Number);
+}
+
 @Component({
   selector: 'app-ps-photo',
   templateUrl: './ps-photo.component.html',
@@ -46,46 +51,52 @@ export class PsPhotoComponent implements OnInit {
 
   ngOnInit(): void {
     gsap.registerPlugin(Draggable);
-    const comparisonSliderWidthMobile = Number($(window).width());
-    const comparisonSliderHeightMobile = comparisonSliderWidth;
+    const browserSize = ( Number($(window).width()) > 600) ? 600 : Number($(window).width());
+    const sliderWidth = ( screen.width <= mobileSize ) ? Number(screen.width) : browserSize;
+    const sliderHeight = ( screen.width <= mobileSize ) ? Number(screen.height) : browserSize;
+    const startPosition = sliderWidth / 2;
     const tl = new TimelineMax({delay: 1});
     // set initial positioning
     tl.set($('.slider-caption'), {autoAlpha: 0, yPercent: -100}, 0);
-    tl.to($('.comparison-slider-container > .slider-left'), 0.7, {width: startPosition, ease: 'Back.easeOut.config(1.7)'}, 0);
-    tl.to($('.comparison-slider-container > .handle'), 0.7, {x: startPosition, ease: 'Back.easeOut.config(1.7)'}, 0);
+    tl.to($('.slider-left'), 0.7, {width: startPosition, ease: 'Back.easeOut.config(1.7)'}, 0);
+    tl.to($('.handle'), 0.7, {x: startPosition, ease: 'Back.easeOut.config(1.7)'}, 0);
     tl.staggerTo($('.slider-caption'), 0.7, {autoAlpha: 1, yPercent: 0, ease: 'Back.easeInOut.config(3)'}, -0.3);
     // draggable
-    if ( screen.width <= mobileSize ) {
-      Draggable.create($('.comparison-slider-container > .handle'), {
-        bounds: {
-          minX: 0,
-          minY: 0,
-          maxX: comparisonSliderWidthMobile,
-          maxY: comparisonSliderHeightMobile,
-        },
-        type: 'x',
-        edgeResistance: 1,
-        throwProps: true,
-        onDrag: this.onHandleDrag
-      });
-    } else {
-      Draggable.create($('.comparison-slider-container > .handle'), {
-        bounds: {
-          minX: 0,
-          minY: 0,
-          maxX: comparisonSliderWidth,
-          maxY: comparisonSliderHeight,
-        },
-        type: 'x',
-        edgeResistance: 1,
-        throwProps: true,
-        onDrag: this.onHandleDrag
+    Draggable.create($('.handle'), {
+      bounds: {
+        minX: 0,
+        minY: 0,
+        maxX: sliderWidth,
+        maxY: sliderHeight,
+      },
+      type: 'x',
+      edgeResistance: 1,
+      throwProps: true,
+      onDrag: this.onHandleDrag
+    });
+    $('.slider-bg, .right, .left').on('click', () => { // backToCneter
+      gsap.to($('.slider-left'), {width: startPosition, ease: 'Power2.easeOut', duration: 0.7});
+      gsap.to($('.handle'), {x: startPosition, ease: 'Power2.easeOut', duration: 0.7});
+      gsap.to($('.slider-caption'), {autoAlpha: 1, yPercent: 0, ease: 'Back.easeInOut.config(3)', duration: 0.7});
+    });
+    /*if (!$('.slider-caption-right').is(':hidden')){
+      $('.slider-bg-left').on('click', () => {
+        gsap.to($('.slider-left'), {width: sliderWidth, ease: 'Power2.easeOut', duration: 0.7});
+        gsap.to($('.handle'), {x: sliderWidth, ease: 'Power2.easeOut', duration: 0.7});
+        showLeftCaption();
       });
     }
+    if (!$('.slider-caption-left').is(':hidden')){
+      $('.slider-bg-right').on('click', () => {
+        gsap.to($('.slider-left'), {width: 0, ease: 'Power2.easeOut', duration: 0.7});
+        gsap.to($('.handle'), {x: 0, ease: 'Power2.easeOut', duration: 0.7});
+        showRightCaption();
+      });
+    }*/
   }
   onHandleDrag(this: Draggable): void {
     if ( screen.width <= mobileSize ) {
-      TweenMax.set($('.slider-left'), {width: this.endX});
+      gsap.set($('.slider-left'), {width: this.endX});
       // show/hide caption if you drag past the center of the container, towards left/right direction.
       if (this.endX >= (this.maxX / 2) && this.getDirection($('#compare')) === 'right') {
         showLeftCaption();
@@ -94,7 +105,7 @@ export class PsPhotoComponent implements OnInit {
         showRightCaption();
       }
     } else {
-      TweenMax.set($('.slider-left'), {width: this.endX});
+      gsap.set($('.slider-left'), {width: this.endX});
       // show/hide caption if you drag past the center of the container, towards left/right direction.
       if (this.endX >= (this.maxX / 2) && this.getDirection($('#compare')) === 'right') {
         showLeftCaption();

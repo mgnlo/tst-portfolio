@@ -1,4 +1,4 @@
-import { Component, OnInit, Injectable } from '@angular/core';
+import { Component, OnInit, Injectable, AfterViewInit } from '@angular/core';
 import * as $ from 'jquery';
 import {gsap} from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
@@ -47,23 +47,19 @@ const hexInfo: Array<{eng: string; ch: string; num: number}> = [
   styleUrls: ['./mockup.component.scss']
 })
 
-export class MockupComponent implements OnInit {
+export class MockupComponent implements AfterViewInit, OnInit {
   constructor() { }
   hexs = getHexItems(hexInfo);
-
+  ngAfterViewInit(): void {
+    orderHex(); // to orderHex() in route at first time
+  }
   ngOnInit(): void {
-    this.winLoad();
     gsap.registerPlugin(ScrollTrigger);
     const tl1 = gsap.timeline({});
     tl1.set($('.honeycombs-inner-wrapper'), { transformPerspective: 300, transformStyle: 'preserve-3d', y: '-1rem'});
     tl1.to($('.honeycombs-inner-wrapper'), {rotationZ: -15}).add('z', '+=0.2'); // add label "z" for placement of next group of tweens
     tl1.set($('.wrap .title'), { transformPerspective: 300, transformStyle: 'preserve-3d', y: '-1rem'});
     tl1.to($('.wrap .title'), {rotationZ: -15}).add('z', '+=0.2'); // add label "z" for placement of next group of tweens
-  }
-  winLoad = () => {
-    $(window).on('load', () => {
-        orderHex();
-    });
   }
   openModal(id: number): void{
     const mH = Number($('.modal:nth-child(' + id + 1 + ')').height());

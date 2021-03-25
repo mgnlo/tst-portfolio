@@ -61,27 +61,29 @@
     @include justify-content(center);
     display: inline-block;
     position: relative;
+    .fa-inverse {
+      color:#f0dfd6;
+    }
   }
 }
 
 /* MENU BUTTON */
 
 .menu-btn {
-  position: relative;
+  position: fixed;
   display: none;
-  margin: 2em 1.5em;
   @include justify-content(center);
   align-items: center;
-  width: 3em;
-  height: 3em;
   cursor: pointer;
   z-index: 2;
+  right: 5px;
+  top: 0;
 }
 
 .menu-btn__lines {
 
   width: 25px;
-  height: 0.3em;
+  height: 3px;
   border-width: 20px;
   background-color: $color-sec;
   @include transition(all 0.2s ease-in-out);
@@ -91,14 +93,17 @@
     @extend .menu-btn__lines;
     content: "";
     position: absolute;
+    display: block; //to avoid different width
+    width: 25px; //to avoid different width
+    height: 3px; //to avoid different width
   }
 
   &:before {
-    @include transform(translateY(-0.5em));
+    @include transform(translateY(-5px));
   }
 
   &:after {
-    @include transform(translateY(0.5em));
+    @include transform(translateY(5px));
   }
 }
 
@@ -147,25 +152,19 @@
   }
 }
 
-#pic {
-  width: 50vw;
-  position: relative;
-  clip-path: circle(210px at 35em 50%);
-}
-
 /* START ANIMATED X */
 
 .menu-btn.open .menu-btn__lines {
-  @include transform(translateX(2em));
+  @include transform(translateX(5px));
   background-color: transparent;
 
   &:before {
-    @include transform(rotate(45deg) translate(-1.5em, 1.5em));
+    @include transform(rotate(45deg) translate(-5px, 5px));
     background-color: $color-white;
   }
 
   &:after {
-    @include transform(rotate(-45deg) translate(-1.5em, -1.5em));
+    @include transform(rotate(-45deg) translate(-5px, -5px));
     background-color: $color-white;
   }
 }
@@ -216,7 +215,8 @@
 @media screen and (max-width: 768px) {
 
   .fixToCenter {
-    margin: 20vh 0;
+    position: fixed;
+    top: 30vh;
   }
 
   .header .title {
@@ -251,7 +251,7 @@
     li {
       width: 100vw;
       // height: 100vh;
-      margin: 1em 0;
+      margin: 5px 0;
 
       .menu-item {
         color: #b8aaa3;
@@ -285,9 +285,14 @@
   }
 
   .socialLink {
+    padding: 23px 0px;
     a{
       font-size: 25px;
       width: 65px;
+      color: #b8aaa3;
+      .fa-inverse {
+        color:$color-prim;
+      }
     }
   }
 }

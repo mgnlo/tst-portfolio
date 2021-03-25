@@ -5,24 +5,45 @@
     <div class='arrow'><i class="fad fa-angle-double-down"></i></div>
   </div>
 </div>
-<div class='canvas'></div>
-<div class="openCanvas">
-  <div class="gallary">
-    <!-- <div class="pics">Message</div> -->
-  </div>
-</div>
 <div class="grid-container">
   <div class="grid">
     <div class="gridLayer">
-      <div class="gridBlock" id='0'><span class='nav-head' id='spot1'>Hehuan Mountain</span></div>
-      <div class="gridBlock" id='1'><span class='nav-head' id='spot2'>Quingjing Farm</span></div>
-      <div class="gridBlock" id='2'><span class='nav-head' id='spot3'>Macao</span></div>
-      <div class="gridBlock centerPiece" id='3'><span class='nav-head' id='spot4'>Taipei</span></div>
-      <div class="gridBlock" id='4'><span class='nav-head' id='spot5'>Korea</span></div>
-      <div class="gridBlock" id='5'><span class='nav-head' id='spot6'>Kaosiung</span></div>
-      <div class="gridBlock" id='6'><span class='nav-head' id='spot7'>Taichung</span></div>
-      <div class="gridBlock" id='7'><span class='nav-head' id='spot8'>Taoyuan</span></div>
-      <div class="gridBlock" id='8'><span class='nav-head' id='spot9'>New Taipei City</span></div>
+      <div class="gridBlock" id='0' (click)='openModal(0)'><span class='nav-head' id='spot1'>Hehuan Mountain</span></div>
+      <div class="gridBlock" id='1' (click)='openModal(1)'><span class='nav-head' id='spot2'>Quingjing Farm</span></div>
+      <div class="gridBlock" id='2' (click)='openModal(2)'><span class='nav-head' id='spot3'>Macao</span></div>
+      <div class="gridBlock centerPiece" id='3' (click)='openModal(3)'><span class='nav-head' id='spot4'>Taipei</span></div>
+      <div class="gridBlock" id='4' (click)='openModal(4)'><span class='nav-head' id='spot5'>Korea</span></div>
+      <div class="gridBlock" id='5' (click)='openModal(5)'><span class='nav-head' id='spot6'>Kaosiung</span></div>
+      <div class="gridBlock" id='6' (click)='openModal(6)'><span class='nav-head' id='spot7'>Taichung</span></div>
+      <div class="gridBlock" id='7' (click)='openModal(7)'><span class='nav-head' id='spot8'>Taoyuan</span></div>
+      <div class="gridBlock" id='8' (click)='openModal(8)'><span class='nav-head' id='spot9'>New Taipei City</span></div>
+    </div>
+  </div>
+  <div class="modal-overlay">
+    <div class='modal' id='modal_{{i}}' *ngFor="let photo of allPhoto; let i = index;">
+      <button class="close-modal" (click)="closeModal(i)"><i class="fas fa-times"></i></button>
+      <div class='d-flex justify-content-between align-items-center mobile-absolute'>
+        <div class='left'><i class="fas fa-angle-left fa-5x" (click)="prev(i)"></i></div>
+        <div>
+          <div class='imgs'>
+            <ng-container *ngFor="let aImg of photo.img; let ii = index;">
+              <img class='img active' id='img_{{i}}_{{ii}}' src={{aImg}} *ngIf="ii==0; else notFstImg" />
+              <ng-template #notFstImg>
+                <img class='img' id='img_{{i}}_{{ii}}' src={{aImg}} />
+              </ng-template>
+            </ng-container>
+          </div>
+          <div class='thumbs'>
+            <ng-container *ngFor="let aThumb of photo.img; let iii = index;">
+              <img class='thumbnail active' id='thumb_{{i}}_{{iii}}' src={{aThumb}} *ngIf="iii==0; else notFstThumb" (click)="thumbOnClick(i,iii)"/>
+              <ng-template #notFstThumb>
+                <img class='thumbnail' id='thumb_{{i}}_{{iii}}' src={{aThumb}} (click)="thumbOnClick(i,iii)"/>
+              </ng-template>
+            </ng-container>
+          </div>
+        </div>
+        <div class='right'><i class="fas fa-angle-right fa-5x" (click)="next(i)"></i></div>
+      </div>
     </div>
   </div>
 </div>

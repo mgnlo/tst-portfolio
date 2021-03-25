@@ -17,12 +17,12 @@
         </div>
       </div>
     </div>
-    <div class='title'>Mockup<br />Project</div>
+    <div class='title'>Mockup<br/>Project<p class='mobileOnly'>click Hex to Show</p></div>
   </div>
   <div class="modal-overlay">
     <div class='modal' id='modal_{{i}}' *ngFor="let hex of hexs; let i = index;">
       <button class="close-modal" (click)="closeModal(i)"><i class="fas fa-times"></i></button>
-      <div class='d-flex justify-content-between align-items-center'>
+      <div class='d-flex justify-content-between align-items-center mobile-absolute'>
         <div class='left'><i class="fas fa-angle-left fa-5x" (click)="prev(i)"></i></div>
         <div>
           <div class='imgs'>

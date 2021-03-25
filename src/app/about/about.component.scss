@@ -5,10 +5,10 @@ body{
   height: 400vh;
 }
 h1 {
-  font-size: 8rem;
+  font-size: 60px;
   font-family: $font-prim;
   color: $color-prim;
-  margin-top: 8rem;
+  margin-top: 60px;
 }
 #svg {
   overflow: visible;
@@ -45,15 +45,27 @@ h1 {
 #svg{
   margin-top: 100px;
 }
+.showOnPhone{
+  display: none;
+}
 
 @media screen and (max-width: 768px) {
-  .text{
-    font-size:2rem;
+  .showOnPhone{
+    display: block;
+    .text{
+      font-size:18px;
+    }
+    .detail{
+      font-size:16px;
+    }
+    #svg{
+      margin-top: 100px;
+    }
+    .theLine{
+      stroke-width: 10px;
+    }
   }
-  .detail{
-    font-size:1.04rem;
-  }
-  #svg{
-    margin-top: 100px;
+  .showOnComp{
+    display: none;
   }
 }

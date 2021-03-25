@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import * as $ from 'jquery';
-import {gsap} from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
 
 @Component({
   selector: 'app-rwd-website',

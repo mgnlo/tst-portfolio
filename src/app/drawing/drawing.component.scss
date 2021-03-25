@@ -28,9 +28,9 @@ body {
   width: 100%;
   padding: 5rem 0;
   align-items: center;
-  justify-content: center;
-  display: flex;
-  flex-direction:column;
+  @include justify-content(center);
+  @include flexbox;
+  @include flex-direction(column);
 }
 .scene1 {
   background-size: cover;
@@ -89,9 +89,9 @@ body {
   }
 }
 .wrapper{
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;
+  @include flexbox;
+  @include flex-wrap(nowrap);
+  @include flex-direction(row);
   width: 80vw;
   margin: 10rem auto;
   .pic>img{
@@ -116,9 +116,9 @@ body {
 }
 .sketch-modal {
   align-items: center;
-  justify-content: center;
-  display: flex;
-  flex-wrap: wrap;
+  @include justify-content(center);
+  @include flexbox;
+  @include flex-wrap(wrap);
   width: 80vw;
   margin: 5rem 10vw;
   @for $i from 1 through $sketchs {
@@ -126,7 +126,7 @@ body {
       border-radius: 1rem;
       height: 30vh;
       width: 30vh;
-      display: inline-flex;
+      @include inline-flex;
       background-position: center;
       background-repeat: no-repeat;
       // background-size: contain;
@@ -146,31 +146,29 @@ body {
   }
 }
 a2p-gallery{
-  margin-bottom: 5rem;
+  margin-bottom: 50px;
 }
 @media screen and (max-width: 768px) {
-  .content {
-    padding: 8rem 5rem;
-  }
   .imgTitle {
-    font-size: 4rem;
+    font-size: 45px;
   }
   .t1{ display: none;}
   #hero1 ,#hero2{
     margin: 0;
+    padding: unset;
   }
   .layer {
     height: $bgHMobile;
   }
   .wrapper{
-    flex-wrap: wrap;
-    flex-direction: column;
+    @include flex-wrap(wrap);
+    @include flex-direction(column);
     align-items: center;
-    margin: 8rem auto;
+    margin: 58px auto;
     position: relative;
     width: 100vw;
     height: 100vh;
-    margin-top: -1rem;
+    margin-top: 0;
     .pic, .text {
       position: absolute;
       top: 0;
@@ -186,10 +184,11 @@ a2p-gallery{
     }
   }
   .text {
-    margin: 5rem 2.5rem;
+    margin: 15vh 5vw;
     z-index: 5;
     p {
-      font-size: 1rem 1.5rem;
+      font-size: 17px;
+      margin: 10px 0;
     }
   }
   .bgs {
@@ -198,11 +197,11 @@ a2p-gallery{
   }
   .ani-1{
     .layer-4 {
-      background-position: -81rem;
+      background-position: -732px;
       @include transform(scale(1.3));
     }
     .layer-6 {
-      background-position: -68rem;
+      background-position: -582px;
     }
   }
 }

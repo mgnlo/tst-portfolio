@@ -50,7 +50,7 @@ export class DrawingComponent implements OnInit {
       $('.layer-' + i).attr('data-type', 'parallax');
       $('.layer-' + i).attr('data-depth', depth);
     }
-    gsap.registerPlugin(ScrollTrigger, SplitText);
+    gsap.registerPlugin(ScrollTrigger);
     const tl1 = gsap.timeline({
       scrollTrigger: {
         trigger: '#hero1',
@@ -136,8 +136,8 @@ export class DrawingComponent implements OnInit {
         { repeat: -1, yoyo: true, repeatDelay: 3, duration: 0.1, ease: 'circ.easeIn', autoAlpha: 0.5, padding: '0 0.8rem'},
         index * 0.1);
       });*/
-      tl2.fromTo($('.imgTitle'), {duration: 0.1, autoAlpha: 0},
-      { repeat: -1, yoyo: true, repeatDelay: 3, duration: 0.1, ease: 'circ.easeIn', autoAlpha: 0.5});
+      tl2.fromTo($('.imgTitle'), {duration: 0.1, autoAlpha: 0, filter: 'blur(25px)', letterSpacing: '1px'},
+      { repeat: -1, yoyo: true, repeatDelay: 3, duration: 1.5, ease: 'circ.easeIn', autoAlpha: 0.5, filter: 'blur(0px)', letterSpacing: '6px'});
     } else {
       /*$(splitText.chars).each((index, el) => {
         tl2.fromTo($(el), {duration: 0.5, opacity: 0, padding: '0 1rem', filter: 'blur(50px)'},

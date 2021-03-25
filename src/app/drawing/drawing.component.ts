@@ -32,10 +32,10 @@ export class DrawingComponent implements OnInit {
   ih = 600;
 
   bgs = [
-    {layer: 'bglayer-0', url: '/assets/images/train0.png', depth: '0', scale: '0.95'},
-    {layer: 'bglayer-1', url: '/assets/images/train1.png', depth: '5rem', scale: '1.11'},
-    {layer: 'bglayer-2', url: '/assets/images/train2.png', depth: '10rem', scale: '0.95'},
-    {layer: 'bglayer-3', url: '/assets/images/train3.png', depth: '15rem', scale: '0.95'}
+    {layer: 'bglayer-0', url: 'assets/images/train0.png', depth: '0', scale: '0.95'},
+    {layer: 'bglayer-1', url: 'assets/images/train1.png', depth: '5rem', scale: '1.11'},
+    {layer: 'bglayer-2', url: 'assets/images/train2.png', depth: '10rem', scale: '0.95'},
+    {layer: 'bglayer-3', url: 'assets/images/train3.png', depth: '15rem', scale: '0.95'}
   ];
   layers = 5;
   counter = (i: number) => {
@@ -199,12 +199,12 @@ export class DrawingComponent implements OnInit {
     }
     pics.forEach((value, index) => {
       const img: Image = new Image();
-      img.largeUrl = '/assets/images/draw/draw' + index + '.jpg';
+      img.largeUrl = 'assets/images/draw/draw' + index + '.jpg';
       img.id = index;
       img.width = value.width;
       img.height = value.height;
       img.size = `${img.width}x${img.height}`;
-      img.thumbUrl = '/assets/images/draw/draw' + index + '_small.jpg';
+      img.thumbUrl = 'assets/images/draw/draw' + index + '_small.jpg';
       this.imgs.push(img);
     });
     const tl4 = gsap.timeline({

@@ -25,9 +25,9 @@ const getPosition = (elem: Element, target: Element) => {
 const getSpot = (spotName: string, spotToGet: string, num: number) => {
   const imgs = new Array <string> ();
   for (let i = 0; i < num; i++) {
-    imgs.push('/assets/images/photos/' + spotToGet + '_' + i + '.jpg');
+    imgs.push('assets/images/photos/' + spotToGet + '_' + i + '.jpg');
   }
-  const aSpot = { spot: spotName, cover: '/assets/images/photos/' + spotToGet + '_0.jpg', img: imgs};
+  const aSpot = { spot: spotName, cover: 'assets/images/photos/' + spotToGet + '_0.jpg', img: imgs};
   return aSpot;
 };
 const zoomOut = (fromComp: boolean) => {

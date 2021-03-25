@@ -7,9 +7,9 @@ function getHexItems(infos: {eng: string; ch: string; num: number; }[]): Array<{
   infos.forEach((value, index) => {
     let imgs: string[] = new Array <string> ();
     for (let imgI = 0; imgI < value.num; imgI++) {
-      imgs.push('/assets/images/mockup/' + index + '_' + imgI + '.jpg');
+      imgs.push('assets/images/mockup/' + index + '_' + imgI + '.jpg');
     }
-    const aHex = { eng: value.eng, ch: value.ch, cover: '/assets/images/mockup/' + index + '_0.jpg', img: imgs};
+    const aHex = { eng: value.eng, ch: value.ch, cover: 'assets/images/mockup/' + index + '_0.jpg', img: imgs};
     hexArr.push(aHex);
   });
   return hexArr;
